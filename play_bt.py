@@ -39,7 +39,7 @@ def start_loop(inst, path=None):
 def stop_loop(inst):
     if inst in looping_processes:
         looping_processes[inst].kill()
-        looping_processes.pop(inst)
+        del looping_processes[inst]
         print(f"Stopped loop: {inst}")
 
 
@@ -48,37 +48,37 @@ def stop_all_loops():
         stop_loop(inst)
 
 
-def enter_record_mode():
+def _record():
     global is_recording, current_mode
+    if os.path.exists(RECORDING_PATH):
+        os.remove(RECORDING_PATH)
+    try:
+        result = subprocess.run(
+            ["rec", "-r", "44100", "-c", "1", RECORDING_PATH,
+             "trim", "0", str(RECORD_SECONDS)],
+            timeout=RECORD_SECONDS + 5, capture_output=True,
+        )
+        if result.returncode != 0:
+            print(f"  ERROR: {result.stderr.decode().strip()}")
+            is_recording = False
+            return
+    except FileNotFoundError:
+        print("  ERROR: 'rec' not found, install sox: brew install sox")
+        is_recording = False
+        return
+    print("  Recorded. Switching to loop mode.")
+    is_recording = False
+    current_mode = 1
+    start_loop("__voice__", path=RECORDING_PATH)
+
+
+def enter_record_mode():
+    global is_recording
     if is_recording:
         return
     is_recording = True
     stop_all_loops()
-    print(f"\n🎙  RECORD MODE: recording for {RECORD_SECONDS} seconds...")
-
-    def _record():
-        global is_recording, current_mode
-        if os.path.exists(RECORDING_PATH):
-            os.remove(RECORDING_PATH)
-        try:
-            result = subprocess.run(
-                ["rec", "-r", "44100", "-c", "1", RECORDING_PATH,
-                 "trim", "0", str(RECORD_SECONDS)],
-                timeout=RECORD_SECONDS + 5, capture_output=True,
-            )
-            if result.returncode != 0:
-                print(f"  rec error: {result.stderr.decode().strip()}")
-                is_recording = False
-                return
-        except FileNotFoundError:
-            print("  ERROR: 'rec' not found, install sox: brew install sox")
-            is_recording = False
-            return
-        print(f"  Recorded. Switching to loop mode.")
-        is_recording = False
-        current_mode = 1
-        start_loop("__voice__", path=RECORDING_PATH)
-
+    print(f"\n  RECORD MODE: recording for {RECORD_SECONDS} seconds...")
     threading.Thread(target=_record, daemon=True).start()
 
 
@@ -117,13 +117,10 @@ def handle_notification(sender, data):
 
 
 async def main():
-    global current_mode
-    current_mode = 0
-
     print(f"Scanning for '{DEVICE_NAME}'...")
     device = await BleakScanner.find_device_by_name(DEVICE_NAME, timeout=15)
     if not device:
-        print("Device not found. Is it powered on and advertising?")
+        print("Device not found.")
         sys.exit(1)
 
     print(f"Connecting to {device.address}...")

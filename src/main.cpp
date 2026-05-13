@@ -72,7 +72,6 @@ void loop() {
       if (now - modePressStart < LONG_PRESS_MS && now - lastModeToggle > MODE_DEBOUNCE_MS) {
           currentMode = (currentMode == 2) ? 0 : (currentMode + 1) % 2;
           lastModeToggle = now;
-          send("MODE:");
           send(("MODE:" + String(currentMode)).c_str());
       }
   }
@@ -108,8 +107,7 @@ void loop() {
 //   Serial.print("  13:"); Serial.print(touchRead(13));
 //   Serial.print("  12:"); Serial.print(touchRead(12));
 //   Serial.print("  15:"); Serial.print(touchRead(15));
-//   Serial.pr
-//   int("  2:"); Serial.print(touchRead(2));
+//   Serial.print("  2:"); Serial.print(touchRead(2));
 //   Serial.print("  32:"); Serial.println(touchRead(32));
 //   delay(200);
 // }
