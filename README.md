@@ -35,7 +35,10 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
 - Attach copper tape to each place where you want a sensor on the decorative object  
 - Connect each copper sensor to a capacitive touch pin on the ESP32  
 - Solder wires to the copper tape 
-- Connect all components through a breadboard  
+- Connect all components through a breadboard
+
+![description](images/wire_setup.jpg)
+*Detailed Wire Setup*  
 
 ### 2. Software Setup
 - Create a new PlatformIO project for the TTGO T1 board
@@ -55,6 +58,9 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
    - Touch a copper sensor to trigger its sound
    - Short-press the mode switch to toggle between single-play and loop modes
    - Long-press the mode switch to record 3 seconds of sound to loop, then play with adding the other instruments!
+
+![description](images/mode_switch.jpg)
+*Mode Switch Sensor*
 
 ## Reproducibility Notes
 - Touch sensitivity may vary depending on the size of the copper tape sensors; adding extra solder near spots where the sensors are less effective is recommended
