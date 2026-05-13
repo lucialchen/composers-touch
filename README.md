@@ -1,2 +1,2 @@
-# interactive-orchestra
-Mod 3 for Creative Embedded Systems
+# composers-touch
+Final project for Creative Embedded Systems
