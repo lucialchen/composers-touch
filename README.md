@@ -5,6 +5,11 @@ This project transforms an unused decorative wall piece into an interactive musi
 
 The system uses an ESP32 to detect touch input and communicates with a laptop-based program via wireless bluetooth connection to trigger corresponding sound effects. A secondary touch sensor functions as a mode switch, allowing users to toggle between discrete playback, looping composition, and recording modes.
 
+<p align="center">
+  <img src="images/front_of_device.jpg" width="400">
+  <img src="images/back_of_device.jpg" width="400">
+</p>
+
 ## Materials and Components
 
 ### Hardware
