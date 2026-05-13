@@ -67,7 +67,6 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
   <br>
   <em>Closeup of Mode Switch Sensor</em>
 </p>
-*Mode Switch Sensor*
 
 ## Reproducibility Notes
 - Touch sensitivity may vary depending on the size of the copper tape sensors; adding extra solder near spots where the sensors are less effective is recommended
