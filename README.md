@@ -39,8 +39,9 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
 
 <p align="center">
   <img src="images/wire_setup.jpg" width="400">
+  <br>
+  <em>Detailed Wire Setup</em>
 </p>
-*Detailed Wire Setup*  
 
 ### 2. Software Setup
 - Create a new PlatformIO project for the TTGO T1 board
@@ -63,6 +64,8 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
 
 <p align="center">
   <img src="images/mode_switch.jpg" width="400">
+  <br>
+  <em>Closeup of Mode Switch Sensor</em>
 </p>
 *Mode Switch Sensor*
 
