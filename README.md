@@ -8,6 +8,8 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
 <p align="center">
   <img src="images/front_of_device.jpg" width="400">
   <img src="images/back_of_device.jpg" width="400">
+  <br>
+  <em>Front and Back</em>
 </p>
 
 ## Materials and Components
