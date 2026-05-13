@@ -37,7 +37,9 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
 - Solder wires to the copper tape 
 - Connect all components through a breadboard
 
-![description](images/wire_setup.jpg)
+<p align="center">
+  <img src="images/wire_setup.jpg" width="400">
+</p>
 *Detailed Wire Setup*  
 
 ### 2. Software Setup
@@ -59,7 +61,9 @@ The system uses an ESP32 to detect touch input and communicates with a laptop-ba
    - Short-press the mode switch to toggle between single-play and loop modes
    - Long-press the mode switch to record 3 seconds of sound to loop, then play with adding the other instruments!
 
-![description](images/mode_switch.jpg)
+<p align="center">
+  <img src="images/mode_switch.jpg" width="400">
+</p>
 *Mode Switch Sensor*
 
 ## Reproducibility Notes
