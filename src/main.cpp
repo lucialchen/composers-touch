@@ -13,7 +13,6 @@ const int TOUCH_THRESHOLD = 50;
 
 const char* INSTRUMENT_NAMES[] = {"flute", "tambourine", "lyre", "clarinet", "horn"};
 
-// Mode 0 = single, Mode 1 = loop
 int currentMode = 0;
 bool wasActive[NUM_INSTRUMENTS] = {false};
 bool modeWasActive = false;
